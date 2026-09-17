@@ -1,9 +1,49 @@
 
+import matrix.*
+describe "Test de Matrix, se suben los pasajeros, neo, morfeo y trinity" {
 
-describe "group of tests " {
+  test "La nave responde cantidad de pasajeros = a 3" {
+    nave.subirPasajero(neo)
+    nave.subirPasajero(morfeo)
+    nave.subirPasajero(trinity)
+    assert.equals(3, nave.cantidadDePasajeros())
+  }
 
-  test "test 01" {
-    assert.equals(100, 50+50)
+  test "Se comprueba que la nave responde como pasajero de mayor vitalidad a neo" {
+    nave.subirPasajero(neo)
+    nave.subirPasajero(morfeo)
+    nave.subirPasajero(trinity)
+    assert.equals(neo, nave.pasajeroDeMayorVitalidad())
+  }
+
+  test "Se comprueba que la vitalidad de la nave no está equilibrada" {
+    nave.subirPasajero(neo)
+    nave.subirPasajero(morfeo)
+    nave.subirPasajero(trinity)
+    assert.notThat(nave.vitalidadEstaEquilibrada())
+  }
+
+  test "Se comprueba que el elegido está en la nave" {
+    nave.subirPasajero(neo)
+    nave.subirPasajero(morfeo)
+    nave.subirPasajero(trinity)
+    assert.that(nave.elegidoEstaEnLaNave())
+  }
+
+  test "La nave choca y luego se comprueba de que está vacía" {
+    nave.subirPasajero(neo)
+    nave.subirPasajero(morfeo)
+    nave.subirPasajero(trinity)
+    nave.chocar()
+    assert.equals(0, nave.cantidadDePasajeros())
+  }
+
+  test "La nave acelera y luego se comprueba que morfeo tiene 7 de vitalidad" {
+    nave.subirPasajero(neo)
+    nave.subirPasajero(morfeo)
+    nave.subirPasajero(trinity)
+    nave.acelerar()
+    assert.equals(7, morfeo.vitalidad() )
   }
 
 }
